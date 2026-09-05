@@ -94,7 +94,7 @@ main{position:relative;z-index:10}
 .btn.primary:hover{background:var(--accent);color:var(--accent-fg)}
 .btn.ghost{background:transparent;color:var(--fg);box-shadow:0 0 0 1px var(--line-strong)}
 .btn.ghost:hover{background:var(--surface);box-shadow:0 0 0 1px rgb(var(--accent-rgb)/.35)}
-.stats{margin:48px 0 0;max-width:448px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line);padding-top:24px}
+.stats{margin:36px 0 0;max-width:448px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--line);padding-top:24px}
 .stats dt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--subtle)}
 .stats dd{margin:4px 0 0;font-family:"Space Grotesk",sans-serif;font-size:24px;font-weight:600;letter-spacing:-.02em}
 .hero-deck{position:relative;z-index:10;margin:0 auto;width:100%;max-width:384px;padding:0 8px}
@@ -139,15 +139,16 @@ main{position:relative;z-index:10}
 /* content bg (covers field after hero) */
 .content{position:relative;background:var(--bg)}
 
-/* mini strip */
-.strip{position:sticky;top:64px;z-index:30;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 95%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.strip .wrap{padding-top:12px;padding-bottom:12px}
-.strip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
-.strip-row::-webkit-scrollbar{display:none}
-.mini{display:flex;flex-shrink:0;height:48px;align-items:center;gap:8px;border-radius:12px;padding:0 14px 0 10px;background:var(--chassis);box-shadow:0 0 0 1px rgb(240 239 233/.1);transition:background-color .15s,box-shadow .15s}
-.mini.is-active{background:#16161b;box-shadow:0 0 0 1px rgb(var(--key-glow)/.45)}
-.mini img{width:32px;height:32px;border-radius:4px;object-fit:cover;outline:1px solid rgb(255 255 255/.12);outline-offset:-1px}
-.mini span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8e8d88}
+/* plugin strip (in hero, under CTA) */
+.strip{margin-top:24px;max-width:640px}
+.strip-row{display:flex;flex-wrap:wrap;gap:10px}
+.mini{display:flex;height:64px;align-items:center;gap:12px;border-radius:14px;padding:0 18px 0 12px;background:var(--chassis);box-shadow:0 0 0 1px rgb(240 239 233/.14),0 6px 18px rgb(0 0 0/.18);transition:background-color .15s,box-shadow .15s,transform .15s}
+.mini:hover,.mini:focus-visible{transform:translateY(-2px);box-shadow:0 0 0 1px rgb(var(--key-glow)/.45),0 10px 24px rgb(0 0 0/.25)}
+.mini.is-active{background:#16161b;box-shadow:0 0 0 1px rgb(var(--key-glow)/.55),0 0 20px rgb(var(--key-glow)/.18)}
+.mini img{width:40px;height:40px;border-radius:6px;object-fit:cover;outline:1px solid rgb(255 255 255/.14);outline-offset:-1px}
+.mini span{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:600;letter-spacing:-.01em;color:#ecebe6;white-space:nowrap}
+.mini.is-active span{color:#fff}
+@media(max-width:480px){.mini{height:56px;padding:0 14px 0 10px;gap:10px}.mini img{width:32px;height:32px}.mini span{font-size:14px}}
 
 /* sections */
 section.block{scroll-margin-top:128px;padding:80px 0}
@@ -251,6 +252,7 @@ footer{position:relative;z-index:10;border-top:1px solid var(--line);background:
           <a class="btn primary" href="#axis">Explore the decks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7v10H7"/></svg></a>
           <a class="btn ghost" href="https://github.com/kotyzap" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg> GitHub</a>
         </div>
+        <div class="strip" aria-label="Plugins"><div class="strip-row" id="strip"></div></div>
         <dl class="stats">
           <div><dt>Plugins</dt><dd>06</dd></div>
           <div><dt>License</dt><dd>MIT</dd></div>
@@ -270,7 +272,6 @@ footer{position:relative;z-index:10;border-top:1px solid var(--line);background:
   </section>
 
   <div class="content">
-    <div class="strip"><div class="wrap"><div class="strip-row" id="strip"></div></div></div>
 
     <section class="block" id="axis">
       <div class="wrap">
