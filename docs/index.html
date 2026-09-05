@@ -141,7 +141,8 @@ main{position:relative;z-index:10}
 
 /* plugin strip (in hero, under CTA) */
 .strip{margin-top:24px;max-width:640px}
-.strip-row{display:flex;flex-wrap:wrap;gap:10px}
+.strip-row{display:grid;grid-template-columns:repeat(3,max-content);gap:10px}
+@media(max-width:480px){.strip-row{grid-template-columns:repeat(2,1fr)}}
 .mini{display:flex;height:64px;align-items:center;gap:12px;border-radius:14px;padding:0 18px 0 12px;background:var(--chassis);box-shadow:0 0 0 1px rgb(240 239 233/.14),0 6px 18px rgb(0 0 0/.18);transition:background-color .15s,box-shadow .15s,transform .15s}
 .mini:hover,.mini:focus-visible{transform:translateY(-2px);box-shadow:0 0 0 1px rgb(var(--key-glow)/.45),0 10px 24px rgb(0 0 0/.25)}
 .mini.is-active{background:#16161b;box-shadow:0 0 0 1px rgb(var(--key-glow)/.55),0 0 20px rgb(var(--key-glow)/.18)}
